@@ -1,0 +1,227 @@
+.home {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 171, 240, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.home .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.home-content h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.home-content h1 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.home-content h1 span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-content h3 .text {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.home-content p {
+  font-size: 1.6rem;
+  margin: 2rem 0 3rem;
+  line-height: 1.8;
+  opacity: 0.8;
+}
+
+.home-sci {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.home-sci a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  background: transparent;
+  border: 0.2rem solid var(--primary-color);
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-sci a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.home-sci a:hover::before {
+  left: 0;
+}
+
+.home-sci a:hover {
+  color: var(--bg-color);
+  transform: translateY(-0.5rem);
+  box-shadow: var(--shadow);
+}
+
+.btn-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 3rem;
+  background: var(--gradient);
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  color: var(--bg-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.btn-box:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 15px 40px rgba(0, 171, 240, 0.4);
+}
+
+.btn-box i {
+  transition: var(--transition);
+}
+
+.btn-box:hover i {
+  transform: translateX(0.5rem);
+}
+
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  width: 40rem;
+  height: 40rem;
+}
+
+.profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1rem solid var(--secondary-color);
+  position: relative;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: var(--gradient);
+  border-radius: 50%;
+  filter: blur(2rem);
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2rem); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .home .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 4rem;
+  }
+  
+  .home-content h1 {
+    font-size: 4.5rem;
+  }
+  
+  .image-container {
+    width: 35rem;
+    height: 35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .home-content h3 {
+    font-size: 2rem;
+  }
+  
+  .image-container {
+    width: 28rem;
+    height: 28rem;
+  }
+  
+  .home-sci a {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+}
