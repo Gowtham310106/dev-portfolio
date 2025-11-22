@@ -178,6 +178,12 @@
   opacity: 1;
 }
 
+/* Show overlay on mobile when card is clicked */
+.project-card.overlay-active .project-overlay {
+  opacity: 1;
+  z-index: 10;
+}
+
 .project-links {
   display: flex;
   gap: 1.5rem;
@@ -314,6 +320,40 @@
   .filter-btn {
     padding: 0.8rem 1.5rem;
     font-size: 1.2rem;
+  }
+
+  /* Make overlay always visible when active on mobile */
+  .project-card.overlay-active .project-overlay {
+    opacity: 1 !important;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  /* Ensure links are clickable on mobile */
+  .project-overlay {
+    pointer-events: none;
+  }
+
+  .project-card.overlay-active .project-overlay,
+  .project-overlay .project-links {
+    pointer-events: auto;
+  }
+
+  /* Make project links larger and more touch-friendly on mobile */
+  .project-links a {
+    width: 6rem;
+    height: 6rem;
+    font-size: 2.5rem;
+  }
+
+  /* Add visual indicator that card is clickable on mobile */
+  .project-card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 171, 240, 0.3);
+  }
+
+  .project-card:active {
+    transform: scale(0.98);
   }
 }
 

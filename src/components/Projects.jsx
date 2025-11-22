@@ -4,6 +4,7 @@ import '../styles/Projects.css'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [activeOverlay, setActiveOverlay] = useState(null)
 
   const projects = [
     {
@@ -130,7 +131,7 @@ const Projects = () => {
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
-                className={`project-card ${project.featured ? 'featured' : ''}`}
+                className={`project-card ${project.featured ? 'featured' : ''} ${activeOverlay === project.id ? 'overlay-active' : ''}`}
                 variants={itemVariants}
                 whileHover={{ 
                   y: -15,
@@ -139,6 +140,12 @@ const Projects = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
                 layout
+                onClick={() => {
+                  // Toggle overlay on mobile
+                  if (window.innerWidth <= 768) {
+                    setActiveOverlay(activeOverlay === project.id ? null : project.id)
+                  }
+                }}
               >
                 <div className="project-image">
                   <motion.img 
@@ -151,9 +158,28 @@ const Projects = () => {
                     className="project-overlay"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
+                    animate={{ 
+                      opacity: activeOverlay === project.id ? 1 : undefined 
+                    }}
                     transition={{ duration: 0.3 }}
+                    onClick={(e) => {
+                      // Close overlay when clicking on overlay background (not links)
+                      if (e.target === e.currentTarget || e.target.classList.contains('project-overlay')) {
+                        if (window.innerWidth <= 768) {
+                          setActiveOverlay(null)
+                        }
+                      }
+                      // Prevent card click when clicking on overlay
+                      e.stopPropagation()
+                    }}
                   >
-                    <div className="project-links">
+                    <div 
+                      className="project-links"
+                      onClick={(e) => {
+                        // Prevent closing when clicking on links container
+                        e.stopPropagation()
+                      }}
+                    >
                       <motion.a 
                         href={project.liveLink} 
                         target="_blank" 
