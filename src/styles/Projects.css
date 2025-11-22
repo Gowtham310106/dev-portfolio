@@ -20,15 +20,55 @@
   font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  width: 300%;
+  height: 300%;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: var(--primary-color);
   color: var(--bg-color);
-  transform: translateY(-0.2rem);
-  box-shadow: var(--shadow);
+  border-color: var(--primary-color);
+  box-shadow: 
+    0 5px 20px rgba(0, 171, 240, 0.4),
+    inset 0 0 20px rgba(0, 171, 240, 0.1);
+}
+
+.filter-btn.active {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 
+      0 5px 20px rgba(0, 171, 240, 0.4),
+      inset 0 0 20px rgba(0, 171, 240, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 5px 30px rgba(0, 171, 240, 0.6),
+      inset 0 0 30px rgba(0, 171, 240, 0.2);
+  }
 }
 
 .projects-grid {
@@ -42,9 +82,29 @@
   border-radius: 2rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient);
+  border-radius: 2rem;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  animation: border-glow 2s ease-in-out infinite;
 }
 
 .project-card.featured {
@@ -52,7 +112,7 @@
   box-shadow: var(--shadow);
 }
 
-.project-card.featured::before {
+.project-card.featured::after {
   content: '';
   position: absolute;
   top: 0;
@@ -60,7 +120,27 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(45deg, transparent, rgba(0, 171, 240, 0.1), transparent);
-  z-index: -1;
+  z-index: 0;
+  animation: shimmer-gradient 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer-gradient {
+  0% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%);
+  }
 }
 
 .project-image {
@@ -114,12 +194,41 @@
   color: var(--bg-color);
   text-decoration: none;
   font-size: 2rem;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--accent-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.project-links a:hover::before {
+  width: 150%;
+  height: 150%;
 }
 
 .project-links a:hover {
   background: var(--accent-color);
-  transform: scale(1.1);
+  box-shadow: 
+    0 0 20px rgba(255, 107, 107, 0.5),
+    inset 0 0 20px rgba(255, 107, 107, 0.2);
+  transform: scale(1.15) translateY(-5px);
+}
+
+.project-links a i {
+  position: relative;
+  z-index: 1;
 }
 
 .featured-badge {
@@ -163,12 +272,33 @@
   border-radius: 2rem;
   font-size: 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.tech-tag:hover::before {
+  left: 0;
 }
 
 .tech-tag:hover {
   background: var(--primary-color);
-  transform: translateY(-0.2rem);
+  border-color: var(--primary-color);
+  color: var(--bg-color);
+  box-shadow: 0 5px 15px rgba(0, 171, 240, 0.3);
 }
 
 /* Responsive Design */

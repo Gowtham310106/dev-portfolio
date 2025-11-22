@@ -13,12 +13,25 @@
   --accent-color: #ff6b6b;
   --gradient: linear-gradient(135deg, #00abf0, #ff6b6b);
   --shadow: 0 10px 30px rgba(0, 171, 240, 0.3);
-  --transition: all 0.3s ease;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
@@ -27,6 +40,63 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Smooth scroll reveal animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .container {
@@ -38,6 +108,25 @@ body {
 section {
   min-height: 100vh;
   padding: 10rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 171, 240, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
@@ -45,6 +134,31 @@ section {
   text-align: center;
   margin-bottom: 6rem;
   font-weight: 700;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--gradient);
+  border-radius: 2px;
+  animation: expand-line 0.8s ease-out;
+}
+
+@keyframes expand-line {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
 }
 
 .section-title span {
@@ -52,6 +166,18 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  display: inline-block;
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(0, 171, 240, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(0, 171, 240, 0.6));
+  }
 }
 
 /* Scrollbar Styling */
