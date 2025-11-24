@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import '../styles/Contact.css'
 
 const Contact = () => {
+  const form = useRef()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +13,14 @@ const Contact = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  // Your EmailJS credentials
+  const EMAILJS_CONFIG = {
+    SERVICE_ID: 'service_az0cpgf',
+    TEMPLATE_ID: 'template_c2tcdcg',
+    PUBLIC_KEY: '0sfYVb8P7QnN4PXUd'
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -19,22 +29,61 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      alert('Message sent successfully!')
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  setIsSubmitting(true)
+  setSubmitStatus(null)
+
+  // Add current time for the email template
+  const now = new Date()
+  const timeString = now.toLocaleString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Asia/Kolkata'
+  })
+
+  try {
+    const result = await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject || 'No Subject',
+        message: formData.message,
+        time: timeString
+      },
+      EMAILJS_CONFIG.PUBLIC_KEY
+    )
+
+    console.log('EmailJS result:', result)
+
+    if (result.text === 'OK') {
+      setSubmitStatus('success')
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       })
-    }, 2000)
+      
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
+    }
+  } catch (error) {
+    console.error('Error sending email:', error)
+    setSubmitStatus('error')
+    setTimeout(() => {
+      setSubmitStatus(null)
+    }, 5000)
+  } finally {
+    setIsSubmitting(false)
   }
+}
 
   const contactInfo = [
     {
@@ -58,10 +107,26 @@ const Contact = () => {
   ]
 
   const socialLinks = [
-    { icon: 'bx bxl-linkedin', href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/' },
-    { icon: 'bx bxl-github', href: 'https://github.com/Gowtham310106' },
-    { icon: 'bx bxl-whatsapp', href: 'https://wa.me/919789502278' },
-    { icon: 'bx bxl-facebook', href: 'https://www.facebook.com/profile.php?id=100050975210709' }
+    { 
+      icon: 'bx bxl-linkedin', 
+      href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/',
+      color: '#0077B5'
+    },
+    { 
+      icon: 'bx bxl-github', 
+      href: 'https://github.com/Gowtham310106',
+      color: '#333'
+    },
+    { 
+      icon: 'bx bxl-whatsapp', 
+      href: 'https://wa.me/919789502278',
+      color: '#25D366'
+    },
+    { 
+      icon: 'bx bxl-facebook', 
+      href: 'https://www.facebook.com/profile.php?id=100050975210709',
+      color: '#1877F2'
+    }
   ]
 
   const containerVariants = {
@@ -113,27 +178,38 @@ const Contact = () => {
 
             <motion.div className="contact-list" variants={itemVariants}>
               {contactInfo.map((info, index) => (
-                <div key={index} className="contact-item">
+                <motion.div 
+                  key={index} 
+                  className="contact-item"
+                  whileHover={{ x: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <i className={info.icon}></i>
                   <div>
                     <h4>{info.label}</h4>
                     <a href={info.link}>{info.value}</a>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
 
             <motion.div className="contact-social" variants={itemVariants}>
               {socialLinks.map((link, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ '--i': index }}
+                  style={{ '--i': index, '--color': link.color }}
+                  whileHover={{ 
+                    scale: 1.2, 
+                    y: -5,
+                    backgroundColor: link.color
+                  }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <i className={link.icon}></i>
-                </a>
+                </motion.a>
               ))}
             </motion.div>
           </motion.div>
@@ -144,11 +220,11 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
                   type="text"
-                  name="name"
+                  name="name"  // Changed back to 'name'
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
@@ -160,7 +236,7 @@ const Contact = () => {
               <div className="form-group">
                 <input
                   type="email"
-                  name="email"
+                  name="email"  // Changed back to 'email'
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
@@ -191,6 +267,35 @@ const Contact = () => {
                 ></textarea>
                 <i className='bx bx-message'></i>
               </div>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div 
+                  className="status-message success"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <i className='bx bx-check-circle'></i>
+                  <div>
+                    <strong>Message sent successfully!</strong>
+                    <p>I'll get back to you soon.</p>
+                  </div>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div 
+                  className="status-message error"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <i className='bx bx-error-circle'></i>
+                  <div>
+                    <strong>Failed to send message</strong>
+                    <p>Please try again or contact me directly.</p>
+                  </div>
+                </motion.div>
+              )}
 
               <motion.button
                 type="submit"
