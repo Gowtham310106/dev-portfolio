@@ -7,50 +7,99 @@ const Projects = () => {
   const [activeOverlay, setActiveOverlay] = useState(null)
 
   const projects = [
-    {
+        {
       id: 1,
-      title: 'Modern Calculator',
-      category: 'frontend',
-      image: '/images/ui.jpg',
-      description: 'A sleek, responsive calculator with advanced functionality and modern UI design.',
-      technologies: ['HTML5', 'CSS3', 'JavaScript'],
-      liveLink: 'https://gowtham310106.github.io/calculator/',
-      githubLink: 'https://github.com/Gowtham310106/calculator',
+      title: 'E-Commerce Platform',
+      category: 'fullstack',
+      image: '/ecom.png',
+      description: 'A full-featured e-commerce platform with payment integration and admin dashboard build for hostel students.',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Razorpay'],
+      liveLink: 'https://needzy.store',
+      githubLink: '#',
       featured: true
     },
-    {
+     {
       id: 2,
+      title: 'E-commerce website for a fridge magnet business',
+      category: 'frontend',
+      image: '/ant.png',
+      description: 'E-commerce website for a fridge magnet business.',
+      technologies: ['React', 'tailwinfcss', 'JavaScript'],
+      liveLink: 'https://ant-hands.netlify.app ',
+      githubLink: 'https://github.com/Gowtham310106/Ant-hands',
+      featured: true
+    },
+      {
+      id: 3,
+      title: 'AI animal detection and deterrent system',
+      category: 'frontend',
+      image: '/rail.jpg',
+      description: 'It is an ai based animal classification and deterrent system in railway tracks.',
+      technologies: ['python', 'audrino', 'yolo'],
+      liveLink: '#project ',
+      githubLink: 'https://github.com/Gowtham310106/AI-railSaviour',
+      featured: true
+    },
+       {
+      id: 4,
+      title: 'Demo e-commerce site for a client',
+      category: 'frontend',
+      image: '/sky.png',
+      description: 'E-commerce website for a resin artist.',
+      technologies: ['React', 'tailwindcss', 'JavaScript'],
+      liveLink: 'https://gowtham310106.github.io/Sky-choices/',
+      githubLink: 'https://github.com/Gowtham310106/Sky-choices',
+      featured: true
+    },
+        {
+      id: 5,
+      title: 'qr-generator',
+      category: 'backend',
+      image: '/qr.png',
+      description: 'Backed practice application- a qr generating app(It generates instant qr images for the links provided).',
+      technologies: ['node.js', 'express.js', 'EJS'],
+      liveLink: '#project ',
+      githubLink: 'https://github.com/Gowtham310106/qr-generator',
+      featured: false
+    },
+    {
+      id: 6,
+      title: 'Modern Calculator',
+      category: 'frontend',
+      image: '/calc.png',
+      description: 'A sleek, responsive calculator with advanced functionality and modern UI design.',
+      technologies: ['HTML5', 'CSS3', 'jQuery', 'JavaScript'],
+      liveLink: 'https://gowtham310106.github.io/calculator/',
+      githubLink: 'https://github.com/Gowtham310106/calculator',
+      featured: false
+    },
+    {
+      id: 7,
       title: 'Full Stack TODO List',
       category: 'fullstack',
       image: 'https://static.vecteezy.com/system/resources/thumbnails/053/221/729/small_2x/checklist-business-performance-monitoring-concept-business-using-tablet-online-survey-filling-out-check-digital-form-task-photo.jpg',
       description: 'A comprehensive todo application with user authentication and real-time updates.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
       liveLink: '#',
       githubLink: 'https://github.com/Gowtham310106/TODO',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'E-Commerce Platform',
-      category: 'fullstack',
-      image: '/images/ecommerce.jpg',
-      description: 'A full-featured e-commerce platform with payment integration and admin dashboard.',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      liveLink: '#',
-      githubLink: '#',
       featured: false
     },
-    {
-      id: 4,
-      title: 'Weather Dashboard',
-      category: 'frontend',
-      image: '/images/weather.jpg',
-      description: 'Real-time weather application with location-based forecasts and interactive maps.',
-      technologies: ['React', 'API Integration', 'Chart.js'],
-      liveLink: '#',
-      githubLink: '#',
-      featured: false
-    }
+
+ 
+   
+    //   {
+    //   id: 6,
+    //   title: 'Full Stack students mark management system',
+    //   category: 'fullstack',
+    //   image: '/ant.png',
+    //   description: "A fullstack application for student's marks management(asked by our department HOD) .",
+    //   technologies: ['React', 'tailwinfcss', 'JavaScript'],
+    //   liveLink: '# ',
+    //   githubLink: 'https://github.com/Gowtham310106/ece-dept-app',
+    //   featured: false
+    // },
+   
+
   ]
 
   const filters = [

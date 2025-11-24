@@ -1,0 +1,59 @@
+/* Alternative: Side by side layout */
+.visitor-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 90px; /* Position to the left of back-to-top button */
+  background: rgba(138, 43, 226, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 8px 12px;
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.3);
+  z-index: 1000;
+  animation: slideInUp 0.5s ease-out;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 5rem;
+  height: 5rem;
+  background: var(--gradient);
+  border: none;
+  border-radius: 50%;
+  color: var(--bg-color);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile adjustments for side-by-side */
+@media (max-width: 768px) {
+  .visitor-counter {
+    bottom: 15px;
+    right: 70px; /* Adjusted for mobile */
+    padding: 6px 10px;
+  }
+  
+  .scroll-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .visitor-counter {
+    right: 60px;
+    padding: 5px 8px;
+  }
+}
