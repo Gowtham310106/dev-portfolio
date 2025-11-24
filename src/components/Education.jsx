@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import '../styles/Education.css'
-
+//h
 const Education = () => {
   const educationData = [
     {
