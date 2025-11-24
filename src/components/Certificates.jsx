@@ -11,41 +11,52 @@ const Certificates = () => {
       title: 'Full Stack Web Development',
       issuer: 'Udemy',
       date: '2024',
-      image: '/certificates/fullstack.jpg',
-      skills: ['React', 'Node.js', 'MongoDB', 'Express'],
-      credentialLink: 'https://coursera.org/verify/XYZ123',
+      image: '/certificates/fullstack.png',
+      skills: ['React', 'Node.js', 'PostgreSQL', 'Express', 'HTML', 'CSS', 'JavaScript', 'REST APIs', 'OAuth', 'git', 'GitHub', 'Deployment'],
+      credentialLink: 'https://www.udemy.com/certificate/UC-77d1501d-9106-4915-93e4-0b625473d9f6/',
       description: 'Comprehensive full-stack web development certification covering frontend and backend technologies.'
     },
-    {
+        {
       id: 2,
-      title: 'React Developer Certification',
-      issuer: 'Meta',
-      date: '2024',
-      image: '/certificates/react.jpg',
-      skills: ['React', 'Redux', 'React Router', 'Hooks'],
-      credentialLink: 'https://coursera.org/verify/ABC456',
-      description: 'Advanced React development certification focusing on modern React patterns and best practices.'
+      title: 'Effective Leadership',
+      issuer: 'HP Life',
+      date: '2025',
+      image: '/certificates/leader.png',
+      skills: ['leadership', 'team management', 'communication', 'problem-solving', 'decision-making', 'team building'],
+      credentialLink: 'https://www.life-global.org/certificate/aed86ddc-19f2-463f-88d1-bcc52ac08919',
+      description: " Learned about effective leadership and its importance, how to successfully leverage different leadership strategies, and why ethics plays a role in effective leadership."
     },
     {
       id: 3,
-      title: 'Node.js Backend Development',
-      issuer: 'Udemy',
-      date: '2023',
-      image: '/certificates/nodejs.jpg',
-      skills: ['Node.js', 'Express', 'REST APIs', 'JWT'],
-      credentialLink: 'https://udemy.com/certificate/XYZ789',
-      description: 'Backend development with Node.js and Express, covering API development and authentication.'
+      title: 'Effective Business Websites',
+      issuer: 'HP Life',
+      date: '2025',
+      image: '/certificates/web.png',
+      skills: ['business websites', 'web design', 'user experience', 'SEO', 'content strategy', 'conversion optimization'],
+      credentialLink: 'https://www.life-global.org/certificate/d7ef40fb-6a01-499b-88ed-d41d492cef43',
+      description: " Learned the importance of business websites, how to design effective websites, and strategies to optimize website performance."
     },
-    {
+        {
       id: 4,
-      title: 'JavaScript Algorithms and Data Structures',
-      issuer: 'freeCodeCamp',
-      date: '2023',
-      image: '/certificates/javascript.jpg',
-      skills: ['JavaScript', 'Algorithms', 'Data Structures', 'ES6+'],
-      credentialLink: 'https://freecodecamp.org/certificate/JS123',
-      description: 'Comprehensive JavaScript certification focusing on algorithms and data structures.'
+      title: 'Building a Product from Scratch',
+      issuer: 'LinkedIn Learning',
+      date: '2025',
+      image: '/certificates/productdev.png',
+      skills: ['product development', 'market research', 'prototyping', 'user testing', 'launch strategies', 'agile methodologies'],
+      credentialLink: 'https://www.linkedin.com/learning/certificates/77c69da69d520ba4d3781d91f7a210f42a57f92ac2d74a2aee2ad640889c2771?trk=share_certificate #productdevelopment.',
+      description: "This course provided insights into the end-to-end process of building a product, from ideation to launch."
     },
+           {
+      id: 4,
+      title: 'Product Management: Building a Product Roadmap',
+      issuer: 'LinkedIn Learning',
+      date: '2025',
+      image: '/certificates/projectdev.png',
+      skills: ['product management', 'roadmapping', 'stakeholder communication', 'prioritization', 'market analysis', 'agile methodologies'],
+      credentialLink: 'https://www.linkedin.com/learning/certificates/923c12fcef7deb343a6216d4d93d85aea6ec16d548b3487d2e28527a0ebd7ed9?trk=share_certificate #productmanagement #productroadmapping.',
+      description: "This course covered the essentials of creating and managing a product roadmap to align with business goals and customer needs."
+    },
+    
     
   ]
 

@@ -58,7 +58,7 @@ const Projects = () => {
       image: '/qr.png',
       description: 'Backed practice application- a qr generating app(It generates instant qr images for the links provided).',
       technologies: ['node.js', 'express.js', 'EJS'],
-      liveLink: '#project ',
+      liveLink: 'https://qr-generator-26yk.onrender.com',
       githubLink: 'https://github.com/Gowtham310106/qr-generator',
       featured: false
     },
