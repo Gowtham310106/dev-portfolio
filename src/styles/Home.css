@@ -41,27 +41,6 @@
   100% { opacity: 1; }
 }
 
-/* Animated Particles */
-.particles-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  background: var(--primary-color);
-  border-radius: 50%;
-  opacity: 0.3;
-  filter: blur(1px);
-  box-shadow: 0 0 10px rgba(0, 171, 240, 0.5);
-}
-
 .home .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -69,6 +48,11 @@
   gap: 6rem;
   position: relative;
   z-index: 1;
+}
+
+.home-content {
+  position: relative;
+  z-index: 10; /* Higher z-index for content */
 }
 
 .home-content h3 {
@@ -135,10 +119,15 @@
   opacity: 0.8;
 }
 
+/* FIXED: Social Icons with proper z-index */
 .home-sci {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 3rem;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+  z-index: 20; /* Higher z-index than profile rings */
 }
 
 .home-sci a {
@@ -156,6 +145,8 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  z-index: 21; /* Even higher z-index for individual icons */
+  pointer-events: auto; /* Ensure clicks work */
 }
 
 .home-sci a::before {
@@ -232,6 +223,7 @@
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+  z-index: 20; /* Higher z-index */
 }
 
 .btn-box::before {
@@ -269,11 +261,14 @@
   transform: translateX(0.5rem) rotate(90deg);
 }
 
+/* FIXED: Profile picture with proper z-index management */
 .profile-picture {
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 1000px;
+  position: relative;
+  z-index: 5; /* Lower z-index than content */
 }
 
 .image-container {
@@ -282,6 +277,7 @@
   height: 40rem;
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
+  z-index: 5;
 }
 
 .profile {
@@ -291,12 +287,13 @@
   border-radius: 50%;
   border: 1rem solid var(--secondary-color);
   position: relative;
-  z-index: 2;
+  z-index: 6; /* Higher than rings but lower than social icons */
   animation: float 4s ease-in-out infinite;
   box-shadow: 
     0 0 40px rgba(0, 171, 240, 0.4),
     inset 0 0 40px rgba(0, 171, 240, 0.1);
   transition: all 0.3s ease;
+  pointer-events: none; /* Profile image shouldn't block clicks */
 }
 
 .image-container:hover .profile {
@@ -317,9 +314,11 @@
   filter: blur(3rem);
   opacity: 0.3;
   animation: pulse 3s ease-in-out infinite alternate;
-  z-index: 1;
+  z-index: 4; /* Lower than profile image */
+  pointer-events: none; /* Shouldn't block clicks */
 }
 
+/* FIXED: Profile rings with lower z-index and pointer-events none */
 .profile-ring {
   position: absolute;
   top: 50%;
@@ -330,8 +329,9 @@
   border: 3px solid var(--primary-color);
   border-radius: 50%;
   opacity: 0.3;
-  z-index: 0;
+  z-index: 3; /* Lower z-index than social icons */
   animation: ring-pulse 3s ease-in-out infinite;
+  pointer-events: none; /* This is key - rings won't block clicks */
 }
 
 .profile-ring::before {
@@ -345,6 +345,7 @@
   border-radius: 50%;
   opacity: 0.2;
   animation: ring-pulse 3s ease-in-out infinite 0.5s;
+  pointer-events: none; /* Ensure pseudo-element also doesn't block clicks */
 }
 
 @keyframes float {
@@ -378,7 +379,7 @@
   }
 }
 
-/* Responsive Design */
+/* FIXED: Responsive Design with proper z-index management */
 @media (max-width: 968px) {
   .home .container {
     grid-template-columns: 1fr;
@@ -394,6 +395,43 @@
     width: 35rem;
     height: 35rem;
   }
+  
+  /* FIX: Center social icons on tablet and mobile */
+  .home-sci {
+    justify-content: center;
+    margin-left: 0;
+    z-index: 20; /* Maintain high z-index */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 4rem;
+  }
+  
+  .home-content h3 {
+    font-size: 2.2rem;
+  }
+  
+  .image-container {
+    width: 30rem;
+    height: 30rem;
+  }
+  
+  /* FIX: Ensure social icons are centered and clickable */
+  .home-sci {
+    justify-content: center;
+    margin: 2rem auto 3rem auto;
+    max-width: 100%;
+    z-index: 20;
+  }
+  
+  .home-sci a {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.9rem;
+    z-index: 21;
+  }
 }
 
 @media (max-width: 480px) {
@@ -406,13 +444,48 @@
   }
   
   .image-container {
-    width: 28rem;
-    height: 28rem;
+    width: 25rem;
+    height: 25rem;
+  }
+  
+  /* FIX: Mobile social icons centering and clickability */
+  .home-sci {
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto 3rem auto;
+    padding: 0 1rem;
+    z-index: 20;
   }
   
   .home-sci a {
     width: 4rem;
     height: 4rem;
     font-size: 1.8rem;
+    z-index: 21;
+  }
+  
+  .btn-box {
+    padding: 1rem 2.5rem;
+    font-size: 1.4rem;
+    z-index: 20;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .home-sci {
+    gap: 0.8rem;
+    z-index: 20;
+  }
+  
+  .home-sci a {
+    width: 3.8rem;
+    height: 3.8rem;
+    font-size: 1.6rem;
+    z-index: 21;
+  }
+  
+  .home-content h1 {
+    font-size: 3rem;
   }
 }
