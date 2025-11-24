@@ -97,7 +97,7 @@ const Header = () => {
           whileHover="hover"
         >
           <motion.img 
-            src="/images/logo.png" 
+            src="logo.jpg" 
             alt="GK Logo"
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.6 }}
