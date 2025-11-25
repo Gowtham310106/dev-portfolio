@@ -5,25 +5,25 @@ import '../styles/Education.css'
 const Education = () => {
   const educationData = [
     {
-      period: '2022 - Present',
+      period: '2024 - Present',
       title: 'B.Tech in Electronics and Communication',
       institution: 'Velammal Institute of Technology',
       description: 'Currently pursuing my degree with a strong focus on both theoretical knowledge and practical applications of modern technology. Maintaining a CGPA of 8.8.',
-      achievements: ['CGPA: 8.8', 'Technical Club Member', 'Project Lead']
+      achievements: ['CGPA: 8.67', 'Inter college Hackthon', 'Project Lead']
     },
     {
-      period: '2021 - 2022',
+      period: '2023 - 2024',
       title: 'NEET Preparation',
-      institution: 'Self-Preparation Journey',
+      institution: 'Aakash Institute,Tanjore',
       description: 'Intensive preparation for NEET exam that taught me resilience, discipline, time management, and problem-solving skills. Scored 537 in NEET 2024.',
       achievements: ['Score: 537', 'Time Management', 'Problem Solving']
     },
     {
-      period: '2019 - 2021',
+      period: '2009 - 2023',
       title: 'School Education',
       institution: 'Infant Jesus Matriculation School',
       description: 'Completed schooling with active participation in science fairs and sports. Served as captain of the boys throwball team, developing leadership and teamwork skills.',
-      achievements: ['Science Fair Participant', 'Sports Captain', 'Team Leadership']
+      achievements: ['Percentage: 89%', 'Sports Captain', 'Team Leadership']
     }
   ]
 
