@@ -25,7 +25,7 @@ const Projects = () => {
       image: '/ant.png',
       description: 'E-commerce website for a fridge magnet business.',
       technologies: ['React', 'tailwinfcss', 'JavaScript'],
-      liveLink: 'https://ant-hands.netlify.app ',
+      liveLink: 'https://ant-hand.netlify.app ',
       githubLink: 'https://github.com/Gowtham310106/Ant-hands',
       featured: true
     },
