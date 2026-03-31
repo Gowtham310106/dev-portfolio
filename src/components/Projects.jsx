@@ -7,8 +7,129 @@ const Projects = () => {
   const [activeOverlay, setActiveOverlay] = useState(null)
 
   const projects = [
-        {
+    {
       id: 1,
+      title: 'Ant Hands',
+      category: 'fullstack',
+      image: '/ant.png',
+      description: 'A premium fridge magnets seller e-commerce platform with a focus on custom designs and seamless shopping experience.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://anthands.in',
+      githubLink: null,
+      featured: true
+    },
+    {
+      id: 2,
+      title: 'Stickymoments',
+      category: 'fullstack',
+      image: '/sticky.png',
+      description: 'Business-to-customer e-commerce platform for personalized magnets and accessories with automated order processing.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://sticymoment.in',
+      githubLink: null,
+      featured: true
+    },
+    {
+      id: 3,
+      title: 'Snaptales Magnet',
+      category: 'fullstack',
+      image: '/snap.png',
+      description: 'An elegant e-commerce experience for photo-to-magnet conversions and high-quality gifting solutions.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://snaptalesmagnet.in',
+      githubLink: null,
+      featured: true
+    },
+    {
+      id: 4,
+      title: 'Riva Magnets',
+      category: 'frontend',
+      image: '/riva.png',
+      description: 'A modern, clean e-commerce interface for high-end magnet products (Currently under development).',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Framer Motion'],
+      liveLink: 'https://rivamagnets.vercel.app',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 5,
+      title: 'Guppys World',
+      category: 'fullstack',
+      image: '/guppy.png',
+      description: 'Comprehensive aquarium fish selling e-commerce website with inventory management and secure payment gateways.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://guppysworld.com',
+      githubLink: null,
+      featured: true
+    },
+    {
+      id: 6,
+      title: 'Royal Fins',
+      category: 'fullstack',
+      image: '/fins.png',
+      description: 'Premium aquarium shop featuring exotic fish and aquatic accessories with a streamlined checkout process.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://royalfins.shop',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 7,
+      title: 'Creospidy',
+      category: 'fullstack',
+      image: '/creo.png',
+      description: 'Thread arts gifting e-commerce platform showcasing unique handmade designs with custom ordering features.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Firebase'],
+      liveLink: 'https://creospidy.vercel.app',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 8,
+      title: 'Outing Management System',
+      category: 'fullstack',
+      image: '/outing.png',
+      description: 'A complete PWA web application for college campuses to manage student outings and permissions efficiently.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'PWA'],
+      liveLink: 'https://outing-pi.vercel.app',
+      githubLink: null,
+      featured: true
+    },
+    {
+      id: 9,
+      title: 'GoalOS',
+      category: 'fullstack',
+      image: '/goal.png',
+      description: 'A multi-user daily habit tracking system built to help users manage and achieve their goals through data visualization.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Appwrite'],
+      liveLink: 'https://goalos.vercel.app',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 10,
+      title: 'APCM - CRM Webapp',
+      category: 'fullstack',
+      image: '/apcm.png',
+      description: 'A comprehensive CRM and enterprise resource planning system for a Bangalore-based pest control business (Currently under development).',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://apcm-crm.vercel.app',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 11,
+      title: 'Attainment Webapp',
+      category: 'fullstack',
+      image: '/attain.png',
+      description: 'Mark attainment calculation system for college departments to simplify educational auditing and reporting.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://attainment-sigma.vercel.app',
+      githubLink: null,
+      featured: false
+    },
+    {
+      id: 12,
       title: 'E-Commerce Platform',
       category: 'fullstack',
       image: '/ecom.png',
@@ -16,91 +137,77 @@ const Projects = () => {
       technologies: ['React', 'Node.js', 'MongoDB', 'Razorpay'],
       liveLink: 'https://needzy.store',
       githubLink: '#',
-      featured: true
+      featured: false
     },
-     {
-      id: 2,
-      title: 'E-commerce website for a fridge magnet business',
-      category: 'frontend',
-      image: '/ant.png',
-      description: 'E-commerce website for a fridge magnet business.',
-      technologies: ['React', 'tailwinfcss', 'JavaScript'],
-      liveLink: 'https://ant-hand.netlify.app ',
-      githubLink: 'https://github.com/Gowtham310106/Ant-hands',
-      featured: true
-    },
-      {
-      id: 3,
-      title: 'AI animal detection and deterrent system',
+    {
+      id: 13,
+      title: 'AI Rail Saviour',
       category: 'frontend',
       image: '/rail.jpg',
-      description: 'It is an ai based animal classification and deterrent system in railway tracks.',
-      technologies: ['python', 'audrino', 'yolo'],
-      liveLink: '#project ',
+      description: 'An AI-based animal classification and deterrent system for railway tracks to prevent accidents.',
+      technologies: ['Python', 'Arduino', 'YOLO'],
+      liveLink: '#',
       githubLink: 'https://github.com/Gowtham310106/AI-railSaviour',
-      featured: true
+      featured: false
     },
-       {
-      id: 4,
-      title: 'Demo e-commerce site for a client',
+    {
+      id: 14,
+      title: 'Sky Choices',
       category: 'frontend',
       image: '/sky.png',
-      description: 'E-commerce website for a resin artist.',
-      technologies: ['React', 'tailwindcss', 'JavaScript'],
+      description: 'Elegant e-commerce website for a resin artist showcasing custom handmade products.',
+      technologies: ['React', 'Tailwind CSS', 'JavaScript'],
       liveLink: 'https://gowtham310106.github.io/Sky-choices/',
       githubLink: 'https://github.com/Gowtham310106/Sky-choices',
-      featured: true
+      featured: false
     },
-        {
-      id: 5,
-      title: 'qr-generator',
+    {
+      id: 15,
+      title: 'QR Generator',
       category: 'backend',
       image: '/qr.png',
-      description: 'Backed practice application- a qr generating app(It generates instant qr images for the links provided).',
-      technologies: ['node.js', 'express.js', 'EJS'],
+      description: 'Instant QR code generation application for links and text with a focus on backend efficiency.',
+      technologies: ['Node.js', 'Express.js', 'EJS'],
       liveLink: 'https://qr-generator-26yk.onrender.com',
       githubLink: 'https://github.com/Gowtham310106/qr-generator',
       featured: false
     },
     {
-      id: 6,
+      id: 16,
       title: 'Modern Calculator',
       category: 'frontend',
       image: '/calc.png',
-      description: 'A sleek, responsive calculator with advanced functionality and modern UI design.',
+      description: 'A sleek, responsive calculator with advanced functionality and a high-performance UI.',
       technologies: ['HTML5', 'CSS3', 'jQuery', 'JavaScript'],
       liveLink: 'https://gowtham310106.github.io/calculator/',
       githubLink: 'https://github.com/Gowtham310106/calculator',
       featured: false
     },
     {
-      id: 7,
-      title: 'Full Stack TODO List',
+      id: 17,
+      title: 'Full Stack TODO',
       category: 'fullstack',
       image: 'https://static.vecteezy.com/system/resources/thumbnails/053/221/729/small_2x/checklist-business-performance-monitoring-concept-business-using-tablet-online-survey-filling-out-check-digital-form-task-photo.jpg',
-      description: 'A comprehensive todo application with user authentication and real-time updates.',
+      description: 'Cloud-synced task management application with real-time updates and user authentication.',
       technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
       liveLink: '#',
       githubLink: 'https://github.com/Gowtham310106/TODO',
       featured: false
     },
-
- 
-   
-    //   {
-    //   id: 6,
-    //   title: 'Full Stack students mark management system',
-    //   category: 'fullstack',
-    //   image: '/ant.png',
-    //   description: "A fullstack application for student's marks management(asked by our department HOD) .",
-    //   technologies: ['React', 'tailwinfcss', 'JavaScript'],
-    //   liveLink: '# ',
-    //   githubLink: 'https://github.com/Gowtham310106/ece-dept-app',
-    //   featured: false
-    // },
-   
-
+    {
+      id: 18,
+      title: 'Royal Cake Accessories',
+      category: 'fullstack',
+      image: '/royal.png',
+      description: 'A specialized catalogue website for a Nagpur-based cake accessories business to effectively showcase their product range.',
+      technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
+      liveLink: 'https://royal-cake-accessories.vercel.app/',
+      githubLink: null,
+      featured: false
+    }
   ]
+
+
 
   const filters = [
     { name: 'All', value: 'all' },
@@ -238,21 +345,25 @@ const Projects = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
+                        title="View Live Site"
                       >
                         <i className='bx bx-link-external'></i>
                       </motion.a>
-                      <motion.a 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        whileTap={{ scale: 0.9 }}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <i className='bx bxl-github'></i>
-                      </motion.a>
+                      {project.githubLink && (
+                        <motion.a 
+                          href={project.githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          whileTap={{ scale: 0.9 }}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                          title="View GitHub Code"
+                        >
+                          <i className='bx bxl-github'></i>
+                        </motion.a>
+                      )}
                     </div>
                   </motion.div>
                   {project.featured && (

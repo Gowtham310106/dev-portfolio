@@ -9,7 +9,7 @@ const Education = () => {
       title: 'B.Tech in Electronics and Communication',
       institution: 'Velammal Institute of Technology',
       description: 'Currently pursuing my degree with a strong focus on both theoretical knowledge and practical applications of modern technology. Maintaining a CGPA of 8.8.',
-      achievements: ['CGPA: 8.67', 'Inter college Hackthon', 'Project Lead']
+      achievements: ['CGPA: 8+', 'Inter college Hackthon', 'Project Lead']
     },
     {
       period: '2023 - 2024',
