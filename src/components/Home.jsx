@@ -15,10 +15,10 @@ const Home = () => {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ["Full Stack Developer", "UI/UX Designer", "Web Developer"],
-      typeSpeed: 100,
-      backSpeed: 100,
-      backDelay: 1000,
+      strings: ["Full Stack Developer", "Professional Problem Solver", "UI/UX Specialist"],
+      typeSpeed: 80,
+      backSpeed: 50,
+      backDelay: 2000,
       loop: true
     })
 
@@ -63,8 +63,8 @@ const Home = () => {
     }
   }, [rotateX, rotateY])
 
-  // Animated particles
-  const particles = Array.from({ length: 50 }, (_, i) => ({
+  // Animated particles - Reduced count for better performance
+  const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     size: Math.random() * 4 + 2,
     x: Math.random() * 100,
@@ -74,11 +74,13 @@ const Home = () => {
   }))
 
   const socialLinks = [
-    { icon: 'bx bxl-facebook', href: 'https://www.facebook.com/profile.php?id=100050975210709' },
-    { icon: 'bx bxl-github', href: 'https://github.com/Gowtham310106' },
-    { icon: 'bx bxl-whatsapp', href: 'https://wa.me/919789502278' },
-    { icon: 'bx bxl-linkedin', href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/' }
+    { icon: 'bx bxl-github', href: 'https://github.com/Gowtham310106', color: '#333' },
+    { icon: 'bx bxl-instagram', href: 'https://www.instagram.com/__gowtham_cameo_/', color: '#E4405F' },
+    { icon: 'bx bxl-linkedin', href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/', color: '#0077B5' },
+    { icon: 'bx bxl-whatsapp', href: 'https://wa.me/919789502278', color: '#25D366' },
   ]
+
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -145,7 +147,7 @@ const Home = () => {
             variants={itemVariants}
             whileHover={{ x: 10 }}
           >
-            Hello, It's Me
+            Developing Digital Solutions
           </motion.h3>
           <motion.h1 
             variants={itemVariants}
@@ -161,8 +163,8 @@ const Home = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            A passionate Fullstack Developer with creative thinking and a strong eye for design. 
-            I create digital experiences that are both beautiful and functional.
+            Delivering high-quality web applications and intuitive user experiences tailored to your business needs. 
+            Specialized in building scalable solutions with a focus on client success and technical excellence.
           </motion.p>
           
           <motion.div 
@@ -177,7 +179,7 @@ const Home = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ '--i': index }}
+                style={{ '--i': index, '--hover-color': link.color }}
                 whileHover={{ 
                   scale: 1.3, 
                   y: -8,
@@ -189,7 +191,7 @@ const Home = () => {
                 animate={{ 
                   opacity: 1, 
                   y: 0,
-                  transition: { delay: index * 0.1 + 1 }
+                  transition: { delay: index * 0.1 + 0.3 }
                 }}
               >
                 <i className={link.icon}></i>

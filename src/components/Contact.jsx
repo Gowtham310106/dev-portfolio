@@ -108,26 +108,27 @@ const handleSubmit = async (e) => {
 
   const socialLinks = [
     { 
-      icon: 'bx bxl-linkedin', 
-      href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/',
-      color: '#0077B5'
-    },
-    { 
       icon: 'bx bxl-github', 
       href: 'https://github.com/Gowtham310106',
       color: '#333'
     },
     { 
+      icon: 'bx bxl-instagram', 
+      href: 'https://www.instagram.com/__gowtham_cameo_/',
+      color: '#E4405F'
+    },
+    { 
+      icon: 'bx bxl-linkedin', 
+      href: 'https://www.linkedin.com/in/gowtham-kumar-260080332/',
+      color: '#0077B5'
+    },
+    { 
       icon: 'bx bxl-whatsapp', 
       href: 'https://wa.me/919789502278',
       color: '#25D366'
-    },
-    { 
-      icon: 'bx bxl-facebook', 
-      href: 'https://www.facebook.com/profile.php?id=100050975210709',
-      color: '#1877F2'
     }
   ]
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

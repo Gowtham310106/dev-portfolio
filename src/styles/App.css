@@ -173,10 +173,10 @@ section > .container {
 
 @keyframes text-shimmer {
   0%, 100% {
-    filter: drop-shadow(0 0 5px rgba(0, 171, 240, 0.3));
+    text-shadow: 0 0 5px rgba(0, 171, 240, 0.3);
   }
   50% {
-    filter: drop-shadow(0 0 15px rgba(0, 171, 240, 0.6));
+    text-shadow: 0 0 15px rgba(0, 171, 240, 0.6);
   }
 }
 

@@ -100,10 +100,10 @@
 
 @keyframes text-glow {
   0% {
-    filter: drop-shadow(0 0 5px rgba(0, 171, 240, 0.5));
+    text-shadow: 0 0 5px rgba(0, 171, 240, 0.5);
   }
   100% {
-    filter: drop-shadow(0 0 20px rgba(0, 171, 240, 0.8));
+    text-shadow: 0 0 15px rgba(0, 171, 240, 0.8);
   }
 }
 
@@ -145,8 +145,9 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  z-index: 21; /* Even higher z-index for individual icons */
-  pointer-events: auto; /* Ensure clicks work */
+  z-index: 21;
+  pointer-events: auto;
+  will-change: transform, box-shadow;
 }
 
 .home-sci a::before {
@@ -156,7 +157,7 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: var(--primary-color);
+  background: var(--hover-color, var(--primary-color));
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -190,10 +191,10 @@
 
 .home-sci a:hover {
   color: var(--bg-color);
-  border-color: var(--primary-color);
+  border-color: var(--hover-color, var(--primary-color));
   box-shadow: 
-    0 0 20px rgba(0, 171, 240, 0.6),
-    inset 0 0 20px rgba(0, 171, 240, 0.2);
+    0 0 20px var(--hover-color, rgba(0, 171, 240, 0.6)),
+    inset 0 0 20px var(--hover-color, rgba(0, 171, 240, 0.2));
 }
 
 .home-sci a i {
@@ -278,6 +279,7 @@
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
   z-index: 5;
+  will-change: transform;
 }
 
 .profile {
@@ -311,11 +313,12 @@
   height: 110%;
   background: var(--gradient);
   border-radius: 50%;
-  filter: blur(3rem);
+  filter: blur(20px);
   opacity: 0.3;
   animation: pulse 3s ease-in-out infinite alternate;
-  z-index: 4; /* Lower than profile image */
-  pointer-events: none; /* Shouldn't block clicks */
+  z-index: 4;
+  pointer-events: none;
+  will-change: opacity, transform;
 }
 
 /* FIXED: Profile rings with lower z-index and pointer-events none */

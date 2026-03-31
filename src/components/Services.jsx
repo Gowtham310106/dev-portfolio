@@ -6,29 +6,30 @@ const Services = () => {
   const services = [
     {
       icon: 'bx bx-code-alt',
-      title: 'Frontend Development',
-      description: 'I create responsive and interactive web interfaces using modern frameworks like React, ensuring optimal user experience across all devices.',
-      features: ['React.js', 'HTML5/CSS3', 'JavaScript ES6+', 'Responsive Design']
+      title: 'Custom Web Apps',
+      description: 'I deliver high-performance, user-centric web applications that drive engagement and solve real business problems using modern frameworks.',
+      features: ['React.js Expert', 'Scalable Architecture', 'Performance Focused', 'Responsive Design']
     },
     {
       icon: 'bx bx-server',
-      title: 'Backend Development',
-      description: 'I build robust and scalable server-side applications with Node.js and Express, implementing secure APIs and efficient database management.',
-      features: ['Node.js', 'Express.js', 'REST APIs', 'Database Design']
+      title: 'Backend Systems',
+      description: 'I build secure, scalable backend architectures and robust API integrations that form a reliable foundation for your business operations.',
+      features: ['Node.js & Express', 'Secure API Design', 'Database Management', 'Cloud Integration']
     },
     {
       icon: 'bx bx-rocket',
-      title: 'Web Optimization',
-      description: 'I optimize websites for maximum speed and performance, implementing best practices for SEO and user experience enhancement.',
-      features: ['Performance', 'SEO Optimization', 'Best Practices', 'Analytics']
+      title: 'Business Digitalization',
+      description: 'I help businesses transition to digital platforms, optimizing workflows and implementing tools that increase efficiency and ROI.',
+      features: ['Workflow Automation', 'E-commerce Solutions', 'SEO Strategy', 'Analytics Integration']
     },
     {
-      icon: 'bx bx-mobile-alt',
-      title: 'Responsive Design',
-      description: 'I design and develop mobile-first websites that provide seamless experience across all screen sizes and devices.',
-      features: ['Mobile First', 'Cross-browser', 'Progressive Web Apps', 'UI/UX Design']
+      icon: 'bx bx-layout',
+      title: 'UI/UX Strategy',
+      description: 'I design thoughtful, intuitive user experiences that prioritize your business goals while providing maximum value to your customers.',
+      features: ['User Research', 'Wireframing', 'Prototyping', 'Interactive Design']
     }
   ]
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

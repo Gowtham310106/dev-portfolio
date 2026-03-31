@@ -1,13 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import Counter from './Counter'
 import '../styles/About.css'
 
 const About = () => {
   const stats = [
-    { number: '2+', text: 'Years Experience' },
+    { number: '1.5+', text: 'Years Experience' },
     { number: '10+', text: 'Projects Completed' },
-    { number: '5+', text: 'Happy Clients' },
-    { number: '3+', text: 'Technologies' }
+    { number: '15+', text: 'Clients Completed' },
+    { number: '6+', text: 'Technologies' }
   ]
 
   const containerVariants = {
@@ -91,7 +92,7 @@ const About = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <h4>{stat.number}</h4>
+                  <h4><Counter value={stat.number} duration={4} /></h4>
                   <p>{stat.text}</p>
                 </motion.div>
               ))}
@@ -110,4 +111,4 @@ const About = () => {
   )
 }
 
-export default About
+export default About
