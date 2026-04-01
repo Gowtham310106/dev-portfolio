@@ -6,7 +6,7 @@ import '../styles/About.css'
 const About = () => {
   const stats = [
     { number: '1.5+', text: 'Years Experience' },
-    { number: '10+', text: 'Projects Completed' },
+    { number: '20+', text: 'Projects Completed' },
     { number: '15+', text: 'Clients Completed' },
     { number: '6+', text: 'Technologies' }
   ]
