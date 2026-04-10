@@ -10,6 +10,7 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import ScrollToTop from './components/ScrollToTop'
 import VisitorCounter from './components/VisitorCounter'
+import BackgroundMusic from './components/BackgroundMusic'
 import { trackPageView } from './utils/analytics'
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
       <Education />
       <Contact />
       <ScrollToTop />
+      
+      <BackgroundMusic 
+        audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
+      />
       
       <VisitorCounter 
         showCounter={true}
