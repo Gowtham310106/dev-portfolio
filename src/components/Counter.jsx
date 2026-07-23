@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState, useRef } from 'react';
 import { useInView, animate, useMotionValue, useTransform } from 'framer-motion';
 
@@ -38,3 +39,4 @@ const Counter = ({ value, duration = 3 }) => {
 };
 
 export default Counter;
+

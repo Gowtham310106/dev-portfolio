@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from 'react'
 import { incrementLocalCount, getLocalCount, incrementCountAPI, getCountAPI } from '../utils/visitorCounter'
 import '../styles/VisitorCounter.css'

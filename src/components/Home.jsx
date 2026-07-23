@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+"use client"
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import Typed from 'typed.js'
 import '../styles/Home.css'
@@ -6,6 +7,7 @@ import '../styles/Home.css'
 const Home = () => {
   const typedRef = useRef(null)
   const profileRef = useRef(null)
+  const [isMounted, setIsMounted] = useState(false)
   
   // Motion values for 3D tilt effect
   const rotateX = useMotionValue(0)
@@ -14,6 +16,7 @@ const Home = () => {
   const springY = useSpring(rotateY, { stiffness: 50, damping: 15 })
 
   useEffect(() => {
+    setIsMounted(true)
     const typed = new Typed(typedRef.current, {
       strings: ["Full Stack Developer", "Professional Problem Solver", "UI/UX Specialist"],
       typeSpeed: 80,
@@ -64,14 +67,18 @@ const Home = () => {
   }, [rotateX, rotateY])
 
   // Animated particles - Reduced count for better performance
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 10 + 10,
-    delay: Math.random() * 5
-  }))
+  // We only generate particles after mount to avoid hydration mismatch
+  const [particles, setParticles] = useState([])
+  useEffect(() => {
+    setParticles(Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 4 + 2,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 5
+    })))
+  }, [])
 
   const socialLinks = [
     { icon: 'bx bxl-github', href: 'https://github.com/Gowtham310106', color: '#333' },
@@ -111,7 +118,7 @@ const Home = () => {
     <section className="home" id="home">
       {/* Animated Background Particles */}
       <div className="particles-container">
-        {particles.map((particle) => (
+        {isMounted && particles.map((particle) => (
           <motion.div
             key={particle.id}
             className="particle"

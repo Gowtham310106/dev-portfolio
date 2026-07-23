@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import '../styles/Header.css'
@@ -8,7 +9,9 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false
+
+    const updateScroll = () => {
       setIsScrolled(window.scrollY > 100)
       
       // Active section detection
@@ -25,10 +28,18 @@ const Header = () => {
           }
         }
       }
+      ticking = false
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Initial check
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    updateScroll() // Initial check
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

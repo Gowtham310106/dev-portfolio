@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { motion } from 'framer-motion'
 import Counter from './Counter'
@@ -52,7 +53,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="image-wrapper">
-              <img src="plazo.jpeg" alt="Gowtham Kumar" />
+              <img src="hero.jpeg" alt="Gowtham Kumar" />
               <div className="floating-elements">
                 <div className="floating-element element-1">🚀</div>
                 <div className="floating-element element-2">💻</div>

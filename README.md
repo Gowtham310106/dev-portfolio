@@ -100,7 +100,7 @@ The built files will be in the `dist` directory, ready to be deployed to any sta
 ```
 2026-portfolio/
 ├── public/
-│   ├── plazo.jpeg          # Profile image
+│   ├── hero.jpeg           # Profile image
 │   └── vite.svg            # Favicon
 ├── src/
 │   ├── components/
@@ -175,7 +175,7 @@ Edit CSS variables in `src/styles/App.css`:
 - Change social links in `src/components/Home.jsx` and `src/components/Contact.jsx`
 
 ### Images
-Replace `public/plazo.jpeg` with your profile image and update image paths in components.
+Replace `public/hero.jpeg` with your profile image and update image paths in components.
 
 ## 📱 Browser Support
 

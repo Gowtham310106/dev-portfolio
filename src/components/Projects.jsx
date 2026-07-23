@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+"use client"
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import '../styles/Projects.css'
 
@@ -207,8 +208,6 @@ const Projects = () => {
     }
   ]
 
-
-
   const filters = [
     { name: 'All', value: 'all' },
     { name: 'Frontend', value: 'frontend' },
@@ -220,202 +219,89 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
-  }
+// Horizontal Scroll Logic removed for performance. Use native horizontal scrolling via CSS.
 
   return (
     <section id="projects" className="projects">
-      <div className="container">
-        <motion.h2 
-          className="section-title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Latest <span>Projects</span>
-        </motion.h2>
-
-        <motion.div 
-          className="filters"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {filters.map((filter, index) => (
-            <motion.button
-              key={filter.value}
-              className={`filter-btn ${activeFilter === filter.value ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter.value)}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
+      <div className="projects-static-container">
+        <div className="projects-wrapper">
+          <div className="container">
+            <motion.h2 
+              className="section-title"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              {filter.name}
-            </motion.button>
-          ))}
-        </motion.div>
+              Latest <span>Projects</span>
+            </motion.h2>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            className="projects-grid"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                className={`project-card ${project.featured ? 'featured' : ''} ${activeOverlay === project.id ? 'overlay-active' : ''}`}
-                variants={itemVariants}
-                whileHover={{ 
-                  y: -15,
-                  scale: 1.02,
-                  transition: { type: "spring", stiffness: 300 }
-                }}
-                whileTap={{ scale: 0.98 }}
-                layout
-                onClick={() => {
-                  // Toggle overlay on mobile
-                  if (window.innerWidth <= 768) {
-                    setActiveOverlay(activeOverlay === project.id ? null : project.id)
-                  }
-                }}
-              >
-                <div className="project-image">
-                  <motion.img 
-                    src={project.image} 
-                    alt={project.title}
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                  <motion.div 
-                    className="project-overlay"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    animate={{ 
-                      opacity: activeOverlay === project.id ? 1 : undefined 
-                    }}
-                    transition={{ duration: 0.3 }}
-                    onClick={(e) => {
-                      // Close overlay when clicking on overlay background (not links)
-                      if (e.target === e.currentTarget || e.target.classList.contains('project-overlay')) {
-                        if (window.innerWidth <= 768) {
-                          setActiveOverlay(null)
-                        }
-                      }
-                      // Prevent card click when clicking on overlay
-                      e.stopPropagation()
-                    }}
-                  >
-                    <div 
-                      className="project-links"
-                      onClick={(e) => {
-                        // Prevent closing when clicking on links container
-                        e.stopPropagation()
-                      }}
+            <motion.div 
+              className="filters"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {filters.map((filter) => (
+                <button
+                  key={filter.value}
+                  className={`filter-btn ${activeFilter === filter.value ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(filter.value)}
+                >
+                  {filter.name}
+                </button>
+              ))}
+            </motion.div>
+
+            <div className="horizontal-track-container">
+              <div className="projects-horizontal-track">
+                <AnimatePresence mode="wait">
+                  {filteredProjects.map((project) => (
+                    <motion.div
+                      key={project.id}
+                      className={`project-card ${project.featured ? 'featured' : ''} ${activeOverlay === project.id ? 'overlay-active' : ''}`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.4 }}
+                      whileHover={{ y: -10 }}
                     >
-                      <motion.a 
-                        href={project.liveLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        whileTap={{ scale: 0.9 }}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        title="View Live Site"
-                      >
-                        <i className='bx bx-link-external'></i>
-                      </motion.a>
-                      {project.githubLink && (
-                        <motion.a 
-                          href={project.githubLink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.2, rotate: 360 }}
-                          whileTap={{ scale: 0.9 }}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.2 }}
-                          title="View GitHub Code"
-                        >
-                          <i className='bx bxl-github'></i>
-                        </motion.a>
-                      )}
-                    </div>
-                  </motion.div>
-                  {project.featured && (
-                    <motion.div 
-                      className="featured-badge"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ type: "spring", stiffness: 200 }}
-                    >
-                      Featured
+                      <div className="project-image">
+                        <img src={project.image} alt={project.title} loading="lazy" />
+                        <div className="project-overlay">
+                          <div className="project-links">
+                            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" title="View Live Site">
+                              <i className='bx bx-link-external'></i>
+                            </a>
+                            {project.githubLink && (
+                              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" title="View GitHub Code">
+                                <i className='bx bxl-github'></i>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                        {project.featured && <div className="featured-badge">Featured</div>}
+                      </div>
+
+                      <div className="project-content">
+                        <h3>{project.title}</h3>
+                        <p>{project.description}</p>
+                        <div className="project-technologies">
+                          {project.technologies.map((tech, index) => (
+                            <span key={index} className="tech-tag">{tech}</span>
+                          ))}
+                        </div>
+                      </div>
                     </motion.div>
-                  )}
-                </div>
-
-                <div className="project-content">
-                  <motion.h3
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    {project.description}
-                  </motion.p>
-                  
-                  <div className="project-technologies">
-                    {project.technologies.map((tech, index) => (
-                      <motion.span 
-                        key={index} 
-                        className="tech-tag"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 + 0.4 }}
-                        whileHover={{ scale: 1.1, y: -3 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
 export default Projects
+

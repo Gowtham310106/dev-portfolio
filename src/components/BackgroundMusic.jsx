@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/BackgroundMusic.css';
 
@@ -27,14 +28,12 @@ const BackgroundMusic = ({ audioUrl }) => {
             window.removeEventListener('click', startPlay);
             window.removeEventListener('touchstart', startPlay);
             window.removeEventListener('scroll', startPlay);
-            window.removeEventListener('mousemove', startPlay);
         };
 
-        // Add listeners for various interactions
-        window.addEventListener('click', startPlay);
-        window.addEventListener('touchstart', startPlay);
-        window.addEventListener('scroll', startPlay);
-        window.addEventListener('mousemove', startPlay);
+        // Add listeners only for intentional user interactions (mousemove removed - fires too frequently)
+        window.addEventListener('click', startPlay, { passive: true });
+        window.addEventListener('touchstart', startPlay, { passive: true });
+        window.addEventListener('scroll', startPlay, { once: true, passive: true });
 
         // Attempt immediate playback
         startPlay();
@@ -80,3 +79,4 @@ const BackgroundMusic = ({ audioUrl }) => {
 };
 
 export default BackgroundMusic;
+

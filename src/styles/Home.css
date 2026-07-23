@@ -10,12 +10,13 @@
 .home::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 171, 240, 0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(0, 171, 240, 0.1) 0%, transparent 60%);
+  animation: rotate 30s linear infinite;
+  will-change: transform;
 }
 
 .home::after {
@@ -29,6 +30,7 @@
     radial-gradient(circle at 20% 50%, rgba(0, 171, 240, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.08) 0%, transparent 50%);
   animation: pulse-bg 8s ease-in-out infinite alternate;
+  will-change: opacity;
 }
 
 @keyframes rotate {
